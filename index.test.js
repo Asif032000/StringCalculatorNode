@@ -18,3 +18,9 @@ test("", () => {
 test("adds numbers from a string with commas and newlines", () => {
   assert.equal(add("1,2,3,4\n5,6,7\n8,9,10"), 55);
 });
+test("adds numbers from a string with commas and newlines", () => {
+  assert.equal(add("//;\n1;2;3;4;5;6;7;8;9;10"), 55);
+});
+test("adds numbers from a string with commas and newlines", () => {
+  assert.equal(add("//%\n1%2%3%4%5%6%7%8%9%10%12"), 67);
+});
