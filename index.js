@@ -1,13 +1,10 @@
-const add = (nums) => {
-  if (nums.length === 0) {
+const add = (numsString) => {
+  if (numsString === "") {
     return 0;
   }
-  if (nums.length === 1) {
-    return parseInt(nums);
-  }
-  if (nums.length === 3) {
-    return parseInt(nums[0]) + parseInt(nums[nums.length - 1]);
-  }
+
+  let nums = numsString.split(",").map(Number);
+  return nums.reduce((sum, num) => sum + num, 0);
 };
 
 module.exports = { add };
