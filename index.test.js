@@ -62,3 +62,9 @@ test("handle multiple delimiters", () => {
 test("handle multiple delimiters", () => {
   assert.equal(add("//[*][%]\n1*2%3"), 6);
 });
+test("handle multiple delimiters", () => {
+  assert.equal(
+    add("//[@@][^^^]\n1@@2@@3@@4@@5@@6@@7^^^8^^^9^^^10^^^2030^^^4444"),
+    55
+  );
+});
