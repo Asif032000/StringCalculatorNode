@@ -2,12 +2,18 @@ const add = (numsString) => {
   let match = numsString.match(/^\/\/.*\s/);
 
   if (match) {
-    let delimiter = numsString.slice(
+    let delimitersString = numsString.slice(
       match.index + 2,
       match.index + match[0].length - 1
-    ); // Parse dynamic delimiter
-    numsString = numsString.slice(match[0].length); // Remove the delimiter definition from the string
-    numsString = numsString.split(delimiter).join(","); // Replace delimiter with ","
+    ); // Extract delimiter string
+    let allMatches = [...delimitersString.matchAll(/\[(.*?)\]/g)].map(
+      (m) => m[1]
+    ); // Extract all delimiters within brackets
+    numsString = numsString.slice(match[0].length); // Remove delimiter definition from the string
+
+    for (let delimiter of allMatches) {
+      numsString = numsString.split(delimiter).join(","); // Replace all delimiter with ","
+    }
   }
 
   let nums = numsString

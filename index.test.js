@@ -19,10 +19,10 @@ test("adds numbers from a string with commas and newlines", () => {
   assert.equal(add("1,2,3,4\n5,6,7\n8,9,10"), 55);
 });
 test("handle delimiters", () => {
-  assert.equal(add("//;\n1;2;3;4;5;6;7;8;9;10"), 55);
+  assert.equal(add("//[;]\n1;2;3;4;5;6;7;8;9;10"), 55);
 });
 test("handle delimiters", () => {
-  assert.equal(add("//%\n1%2%3%4%5%6%7%8%9%10%12"), 67);
+  assert.equal(add("//[%]\n1%2%3%4%5%6%7%8%9%10%12"), 67);
 });
 // test("negative numbers", () => {
 //   assert.equal(add("//%\n1%2%-3%4%5%6%7%8%9%10%12"), 67);
@@ -33,23 +33,32 @@ test("handle delimiters", () => {
 // });
 
 test("handle numbers larger than 1000", () => {
-  assert.equal(add("//;\n1;2;3;4;5;6;7;8;9;10;2030;4444"), 55);
+  assert.equal(add("//[;]\n1;2;3;4;5;6;7;8;9;10;2030;4444"), 55);
 });
 
 test("handle any length delimiter", () => {
-  assert.equal(add("//&&&\n1&&&2&&&3&&&4&&&5&&&6&&&7&&&8&&&9&&&10"), 55);
+  assert.equal(add("//[&&&]\n1&&&2&&&3&&&4&&&5&&&6&&&7&&&8&&&9&&&10"), 55);
 });
 test("handle any length delimiter", () => {
   assert.equal(
-    add("//!@#$\n1!@#$2!@#$3!@#$4!@#$5!@#$6!@#$7!@#$8!@#$9!@#$10"),
+    add("//[!@#$]\n1!@#$2!@#$3!@#$4!@#$5!@#$6!@#$7!@#$8!@#$9!@#$10"),
     55
   );
 });
 test("handle any length delimiter", () => {
   assert.equal(
     add(
-      "//******\n1******2******3******4******5******6******7******8******9******10"
+      "//[******]\n1******2******3******4******5******6******7******8******9******10"
     ),
     55
   );
+});
+test("handle multiple delimiters", () => {
+  assert.equal(
+    add("//[##][;;;]\n1##2##3##4##5##6##7;;;8;;;9;;;10;;;2030;;;4444"),
+    55
+  );
+});
+test("handle multiple delimiters", () => {
+  assert.equal(add("//[*][%]\n1*2%3"), 6);
 });
