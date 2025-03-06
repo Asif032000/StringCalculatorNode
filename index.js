@@ -1,10 +1,6 @@
 const add = (numsString) => {
-  if (numsString === "") {
-    return 0;
-  }
-
-  let nums = numsString.split(",").map(Number);
-  return nums.reduce((sum, num) => sum + num, 0);
+  let nums = numsString.replace(/,/g, " ").replace(/\n/g, " ").split(/\s+/);
+  return nums.reduce((sum, num) => sum + Number(num), 0);
 };
 
 module.exports = { add };

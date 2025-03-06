@@ -3,15 +3,18 @@ const assert = require("assert/strict");
 const { add } = require("./index");
 
 test("", () => {
-  return assert.equal(add(""), 0);
+  assert.equal(add(""), 0);
 });
 
 test("", () => {
-  return assert.equal(add("1"), 1);
+  assert.equal(add("1"), 1);
 });
 test("", () => {
-  return assert.equal(add("1,5"), 6);
+  assert.equal(add("1,5"), 6);
 });
 test("", () => {
-  return assert.equal(add("1,2,3,4,5,6,7,8,9,10"), 55);
+  assert.equal(add("1,2,3,4,5,6,7,8,9,10"), 55);
+});
+test("adds numbers from a string with commas and newlines", () => {
+  assert.equal(add("1,2,3,4\n5,6,7\n8,9,10"), 55);
 });
