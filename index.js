@@ -1,10 +1,13 @@
 const add = (numsString) => {
-  let match = numsString.match(/^\/\/./);
+  let match = numsString.match(/^\/\/.*\s/);
 
   if (match) {
-    let delimiter = numsString[2]; // Extract custom delimiter
-    numsString = numsString.slice(4); // Remove the custom delimiter part
-    numsString = numsString.replace(new RegExp(`\\${delimiter}`, "g"), ","); // Replace delimiter with comma
+    let delimiter = numsString.slice(
+      match.index + 2,
+      match.index + match[0].length - 1
+    ); // Parse dynamic delimiter
+    numsString = numsString.slice(match[0].length); // Remove the delimiter definition from the string
+    numsString = numsString.split(delimiter).join(","); // Replace delimiter with ","
   }
 
   let nums = numsString
@@ -12,6 +15,7 @@ const add = (numsString) => {
     .replace(/\n/g, " ")
     .split(/\s+/)
     .map(Number);
+
   let negativeNumbers = nums.filter((num) => num < 0);
 
   if (negativeNumbers.length > 0) {
