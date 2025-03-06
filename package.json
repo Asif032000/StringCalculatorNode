@@ -1,0 +1,19 @@
+{
+  "name": "stringcalculatornode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asif032000/StringCalculatorNode.git"
+  },
+  "author": "asifhabib",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asif032000/StringCalculatorNode/issues"
+  },
+  "homepage": "https://github.com/Asif032000/StringCalculatorNode#readme"
+}
