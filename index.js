@@ -20,6 +20,8 @@ const add = (numsString) => {
     );
   }
 
+  nums = nums.filter((num) => num < 1001);
+
   return nums.reduce((sum, num) => sum + num, 0);
 };
 
